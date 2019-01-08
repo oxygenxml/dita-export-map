@@ -3,6 +3,7 @@
   
   <target name="dita2exportmap.init">
     <property name="preprocess.copy-image.skip" value="true"/>
+    <property name="preprocess.chunk.skip" value="true"/>
     <condition property="args.rellinks" value="nofamily">
       <not><isset property="args.rellinks"/></not>
     </condition>
