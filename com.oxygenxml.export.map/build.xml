@@ -19,10 +19,7 @@
       force="true"/>
     <mkdir dir="${dita.map.output.dir}/temp"/>
     <copy todir="${dita.map.output.dir}/temp">
-      <fileset dir="${user.input.dir}/" includesfile="${dita.temp.dir.fullpath}${file.separator}allResources.out">
-        <exclude name="**/*.mml"/>
-        <exclude name="**/*.svg"/>
-      </fileset>
+      <fileset dir="${user.input.dir}/" includesfile="${dita.temp.dir.fullpath}${file.separator}allResources.out"/>
     </copy>
     <zip destfile="${dita.map.output.dir}/${dita.map.filename.root}.zip">
       <fileset dir="${dita.map.output.dir}/temp"/>
