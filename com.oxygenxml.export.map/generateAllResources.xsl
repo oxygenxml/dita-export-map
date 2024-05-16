@@ -2,8 +2,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
+    xmlns:relpath="http://dita2indesign/functions/relpath"
     version="2.0"
-  xmlns:oxy="abc">
+    xmlns:oxy="http://www.oxygenxml.com/generate/resources">
+    <xsl:import href="../org.dita-community.common.xslt/xsl/relpath_util.xsl"/>
     <xsl:output method="text"/>
     <xsl:template match="/">
         <xsl:variable name="content" select="."/>
@@ -32,7 +34,7 @@
         <xsl:variable name="srcNormalized" select="replace($correspondingFile/@src, '\\', '/')"/>
         <xsl:variable name="srcFileName" select="tokenize($srcNormalized, '/')[last()]"/>
         <xsl:variable name="pathFileName" select="tokenize($pathNormalized, '/')[last()]"/>
-        <xsl:value-of select="concat(substring-before($pathNormalized, $pathFileName), $srcFileName)"/>
+        <xsl:value-of select="relpath:unencodeUri(concat(substring-before($pathNormalized, $pathFileName), $srcFileName))"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$path"/>
